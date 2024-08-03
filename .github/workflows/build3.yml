@@ -13,7 +13,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build the APK
+
+    - name: Install Dependencies
       run: |
         pip install buildozer
         sudo apt update
@@ -34,6 +35,11 @@ jobs:
           libffi-dev \
           libssl-dev
         pip install cython==0.29.34
+        pip list
+        printf '\nFinished Succesfully.'
+
+    - name: Build the APK
+      run: |
         yes | buildozer -v android debug
 
     - name: Upload APK
