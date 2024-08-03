@@ -36,4 +36,4 @@ jobs:
           libssl-dev
         pip install cython==0.29.34
 
-        buildozer android debug
+        yes | buildozer android debug
