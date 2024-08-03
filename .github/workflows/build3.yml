@@ -36,4 +36,10 @@ jobs:
           libssl-dev
         pip install cython==0.29.34
 
-        yes | buildozer android debug
+        yes | buildozer android debug --log_level=3
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-apk
+        path: bin/*.apk
