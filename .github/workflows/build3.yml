@@ -15,7 +15,6 @@ jobs:
 
     - name: Build the APK
       run: |
-
         pip install buildozer
         sudo apt update
         sudo apt install -y \
@@ -35,8 +34,7 @@ jobs:
           libffi-dev \
           libssl-dev
         pip install cython==0.29.34
-
-        yes | buildozer android debug --log_level=3
+        yes | buildozer -v android debug --log_level=3
 
     - name: Upload APK
       uses: actions/upload-artifact@v3
