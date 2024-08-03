@@ -44,7 +44,7 @@ jobs:
 
     - name: Install Android SDK components
       run: |
-        $HOME/android-sdk/cmdline-tools/tools/bin/sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3"
+        $HOME/android-sdk/cmdline-tools/tools/bin/sdkmanager "platform-tools" "platforms;android-30" "build-tools;35.0.0"
 
     - name: Install Buildozer dependencies
       run: |
