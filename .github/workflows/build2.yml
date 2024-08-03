@@ -24,13 +24,38 @@ jobs:
         api-level: 30
         build-tools: '30.0.3'
         components: |
+          platform-tools
           platforms;android-30
           build-tools;30.0.3
 
-    - name: Install Buildozer
+    - name: Install Buildozer dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y buildozer
+        sudo apt-get install -y \
+          python3-pip \
+          build-essential \
+          git \
+          python3-setuptools \
+          python3-dev \
+          zip \
+          zlib1g-dev \
+          libncurses5-dev \
+          libffi-dev \
+          libgmp-dev \
+          libssl-dev \
+          liblzma-dev \
+          libbz2-dev \
+          libreadline-dev \
+          libsqlite3-dev \
+          openjdk-11-jdk \
+          wget \
+          curl \
+          patch
+
+    - name: Install Buildozer and pip dependencies
+      run: |
+        pip3 install --upgrade pip
+        pip3 install buildozer cython
 
     - name: Build the APK
       run: |
