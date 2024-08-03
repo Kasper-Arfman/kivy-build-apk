@@ -31,19 +31,20 @@ jobs:
     - name: Set up environment variables
       run: |
         echo "ANDROID_HOME=$HOME/android-sdk" >> $GITHUB_ENV
-        echo "PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin:$ANDROID_HOME/platform-tools" >> $GITHUB_ENV
+        echo "PATH=$HOME/android-sdk/cmdline-tools/tools/bin:$PATH" >> $GITHUB_ENV
 
     - name: Verify SDK tools installation
       run: |
         ls -l $HOME/android-sdk/cmdline-tools/tools/bin
+        which sdkmanager
 
     - name: Accept Android SDK licenses
       run: |
-        yes | sdkmanager --licenses || true
+        yes | $HOME/android-sdk/cmdline-tools/tools/bin/sdkmanager --licenses || true
 
     - name: Install Android SDK components
       run: |
-        sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3"
+        $HOME/android-sdk/cmdline-tools/tools/bin/sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3"
 
     - name: Install Buildozer dependencies
       run: |
