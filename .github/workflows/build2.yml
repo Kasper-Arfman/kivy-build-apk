@@ -19,27 +19,31 @@ jobs:
         distribution: 'zulu'
         java-version: '11'
 
-    - name: Install Android SDK tools
+    - name: Install Android SDK command-line tools
       run: |
         sudo apt-get update
         sudo apt-get install -y wget unzip
         wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O commandlinetools.zip
-        mkdir -p $HOME/android-sdk/cmdline-tools/tools
+        mkdir -p $HOME/android-sdk/cmdline-tools
         unzip -q commandlinetools.zip -d $HOME/android-sdk/cmdline-tools
         mv $HOME/android-sdk/cmdline-tools/cmdline-tools $HOME/android-sdk/cmdline-tools/tools
 
     - name: Set up environment variables
       run: |
         echo "ANDROID_HOME=$HOME/android-sdk" >> $GITHUB_ENV
-        echo "PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/35.0.0" >> $GITHUB_ENV
+        echo "PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin:$ANDROID_HOME/platform-tools" >> $GITHUB_ENV
+
+    - name: Verify SDK tools installation
+      run: |
+        ls -l $HOME/android-sdk/cmdline-tools/tools/bin
 
     - name: Accept Android SDK licenses
       run: |
-        yes | $HOME/android-sdk/cmdline-tools/tools/bin/sdkmanager --licenses || true
+        yes | sdkmanager --licenses || true
 
     - name: Install Android SDK components
       run: |
-        $HOME/android-sdk/cmdline-tools/tools/bin/sdkmanager "platform-tools" "platforms;android-30" "build-tools;35.0.0"
+        sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3"
 
     - name: Install Buildozer dependencies
       run: |
