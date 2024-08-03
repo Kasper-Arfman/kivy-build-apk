@@ -40,7 +40,7 @@ jobs:
 
     - name: Accept Android SDK licenses
       run: |
-        yes | $HOME/android-sdk/cmdline-tools/tools/bin/sdkmanager --licenses || true
+        yes | $HOME/android-sdk/cmdline-tools/tools/bin/sdkmanager --licenses
 
     - name: Install Android SDK components
       run: |
@@ -73,6 +73,10 @@ jobs:
       run: |
         pip3 install --upgrade pip
         pip3 install buildozer cython
+
+    - name: List SDK Directory
+      run: |
+        ls -R $HOME/android-sdk
 
     - name: Build the APK
       run: |
