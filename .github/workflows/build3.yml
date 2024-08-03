@@ -34,7 +34,7 @@ jobs:
           libffi-dev \
           libssl-dev
         pip install cython==0.29.34
-        yes | buildozer -v android debug --log_level=3
+        yes | buildozer -v android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v3
