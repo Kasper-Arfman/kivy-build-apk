@@ -34,5 +34,4 @@ jobs:
 
     - name: Build the APK
       run: |
-        cd path/to/your/kivy/project
         buildozer android debug
