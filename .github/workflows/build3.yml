@@ -1,4 +1,4 @@
-name: Build APK
+name: Build3
 
 on:
   push:
@@ -41,6 +41,7 @@ jobs:
           libffi-dev \
           libssl-dev
         pip install cython==0.29.34
+        pip install kivy==2.2.0
         python3 --version
         printf '\nFinished Succesfully.'
 
