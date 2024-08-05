@@ -10,6 +10,8 @@ jobs:
 
       - name: Remove preinstalled JDKs
         run: |
+          JAVA_HOME_PATH="/usr/lib/jvm/temurin-17-jdk-amd64"
+          sudo update-java-alternatives --set ${JAVA_HOME_PATH}
           sudo rm -rf /usr/lib/jvm/temurin-8*
           sudo rm -rf /usr/lib/jvm/temurin-11*
           sudo rm -rf /usr/lib/jvm/temurin-21*
