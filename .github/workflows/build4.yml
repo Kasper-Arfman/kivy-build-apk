@@ -80,9 +80,9 @@ jobs:
           ls /usr/lib/jvm
           printenv | grep JAVA_HOME
 
-          grep JAVA_HOME /etc/environment
-          grep JAVA_HOME /etc/profile
-          grep JAVA_HOME /etc/profile.d/*
+          # grep JAVA_HOME /etc/environment
+          # grep JAVA_HOME /etc/profile
+          # grep JAVA_HOME /etc/profile.d/*
 
       - name: Build with Buildozer
         run: |
