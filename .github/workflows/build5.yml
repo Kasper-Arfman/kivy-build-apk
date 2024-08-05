@@ -1,4 +1,4 @@
-name: Build4 APK
+name: Build5 APK
 on: [push]
 jobs:
   build-android:
@@ -8,15 +8,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Remove preinstalled JDKs
-        run: |
-          JAVA_HOME_PATH="/usr/lib/jvm/temurin-17-jdk-amd64"
-          sudo update-java-alternatives --set ${JAVA_HOME_PATH}
-          sudo rm -rf /usr/lib/jvm/temurin-8*
-          sudo rm -rf /usr/lib/jvm/temurin-11*
-          sudo rm -rf /usr/lib/jvm/temurin-21*
-          ls /usr/lib/jvm
-          java -version
+      # - name: Remove preinstalled JDKs
+      #   run: |
+      #     JAVA_HOME_PATH="/usr/lib/jvm/temurin-17-jdk-amd64"
+      #     sudo update-java-alternatives --set ${JAVA_HOME_PATH}
+      #     sudo rm -rf /usr/lib/jvm/temurin-8*
+      #     sudo rm -rf /usr/lib/jvm/temurin-11*
+      #     sudo rm -rf /usr/lib/jvm/temurin-21*
+      #     ls /usr/lib/jvm
+      #     java -version
 
       # - name: Buildozer dependencies
       #   run: |
@@ -30,8 +30,7 @@ jobs:
       - name: Handle Java path
         run: |
           export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
-          # JAVA_HOME_PATH="/usr/lib/jvm/temurin-17-jdk-amd64"
-          sudo update-java-alternatives --set ${JAVA_HOME}
+          export PATH=$JAVA_HOME/bin:$PATH
 
       - name: Verify Java
         run: | 
@@ -45,9 +44,9 @@ jobs:
           # grep JAVA_HOME /etc/profile
           # grep JAVA_HOME /etc/profile.d/*
 
-      - name: Build with Buildozer
-        run: |
-          yes | buildozer -v android debug
+      # - name: Build with Buildozer
+      #   run: |
+      #     yes | buildozer -v android debug
 
       # - name: Upload artifacts
       #   uses: actions/upload-artifact@v2
