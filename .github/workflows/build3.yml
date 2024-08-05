@@ -41,7 +41,7 @@ jobs:
           libffi-dev \
           libssl-dev \
           automake
-        echo 'export PATH=$PATH:~/.local/bin/' >> ~/.bashrc
+        export PATH=$PATH:~/.local/bin/
         pip install --upgrade cython
         pip3 install --user --upgrade buildozer
 
