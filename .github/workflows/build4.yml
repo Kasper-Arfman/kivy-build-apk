@@ -20,7 +20,6 @@ jobs:
         run: |
           JAVA_HOME_PATH="/usr/lib/jvm/temurin-17-jdk-amd64"
 
-          java -version
           # Backup the original ~/.bashrc file
           cp ~/.bashrc ~/.bashrc.bak
 
@@ -32,11 +31,14 @@ jobs:
               # Append the JAVA_HOME setting to the end of the file
               echo "export JAVA_HOME=${JAVA_HOME_PATH}" >> ~/.bashrc
           fi
+
           # Apply the changes to the current session
           export JAVA_HOME=${JAVA_HOME_PATH}
           source ~/.bashrc
+          
           # Verify the change
           echo "JAVA_HOME is set to: $JAVA_HOME"
+          java -version
 
       # - name: Set up JDK 17
       #   uses: actions/setup-java@v2
