@@ -63,14 +63,13 @@ jobs:
           # echo "JAVA_HOME is set to: $JAVA_HOME"
           # java -version
           # javac -version
-
           # ls /usr/lib/jvm
 
-      # - name: Set up JDK 17
-      #   uses: actions/setup-java@v2
-      #   with:
-      #     java-version: '17'
-      #     distribution: 'temurin'
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
       - name: Verify Java
         run: | 
