@@ -20,7 +20,36 @@ RUN apt update
 RUN apt install -y git zip unzip python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev automake
 
 # Install Python dependencies
-RUN pip3 install --no-cache-dir Cython
+# RUN pip3 install --no-cache-dir Cython
+
+
+# Install system dependencies for building Python packages
+RUN apt-get update && \
+    apt-get install -y \
+    build-essential \
+    python3-dev && \
+    # Clean up to reduce image size
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set up a virtual environment
+RUN python3 -m venv /opt/venv
+
+# Activate the virtual environment and install Cython
+RUN /opt/venv/bin/pip install --upgrade pip && \
+    /opt/venv/bin/pip install Cython
+
+# Set the virtual environment as the default
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Verify installation (optional)
+RUN python -c "import Cython; print(Cython.__version__)"
+
+
+
+
+
+# the rest 
 RUN pip3 install --user --upgrade virtualenv
 RUN pip3 install --user --upgrade buildozer
 
