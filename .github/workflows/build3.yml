@@ -13,11 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-        architecture: x64
+    # - name: Set up Python
+    #   uses: actions/setup-python@v2
+    #   with:
+    #     python-version: 3.9
+    #     architecture: x64
 
 
     - name: Install Dependencies
@@ -45,6 +45,11 @@ jobs:
         pip install kivy==2.2.0
         python3 --version
         printf '\nFinished Succesfully.'
+
+
+    - name: Appclean
+      run: |
+        buildozer appclean
 
     - name: Build the APK
       run: |
