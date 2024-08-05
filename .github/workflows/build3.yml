@@ -26,7 +26,7 @@ jobs:
         sudo apt update
 
         # remove java
-        sudo apt-get purge openjdk-\* icedtea-\* icedtea6-\*
+        sudo apt-get purge openjdk-\* icedtea-\*
 
 
         sudo apt install -y \
