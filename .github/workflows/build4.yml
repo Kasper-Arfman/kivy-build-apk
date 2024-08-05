@@ -1,4 +1,4 @@
-name: Build APK
+name: Build4 APK
 on: [push]
 jobs:
   build-android:
@@ -16,7 +16,7 @@ jobs:
           pip install --user --upgrade Cython virtualenv
           pip install --user --upgrade buildozer
           export PATH=$PATH:~/.local/bin/
-          buildozer -v android debug
+          yes | buildozer -v android debug
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
