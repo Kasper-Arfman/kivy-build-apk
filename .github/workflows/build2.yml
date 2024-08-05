@@ -69,6 +69,11 @@ jobs:
           curl \
           patch
 
+    - name: Check Java version
+      run: |
+        java -version
+        javac -version
+
     - name: Install Buildozer and pip dependencies
       run: |
         pip3 install --upgrade pip
