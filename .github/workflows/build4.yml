@@ -8,52 +8,53 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # - name: Buildozer dependencies
-      #   run: |
-      #     sudo apt update
-      #     sudo apt install -y git zip unzip python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev automake
-      #     pip install --user --upgrade Cython virtualenv
-      #     pip install --user --upgrade buildozer
-      #     export PATH=$PATH:~/.local/bin/
-
-
       - name: Remove preinstalled JDKs
         run: |
           sudo rm -rf /usr/lib/jvm/temurin-8*
           sudo rm -rf /usr/lib/jvm/temurin-11*
           sudo rm -rf /usr/lib/jvm/temurin-21*
           ls /usr/lib/jvm
-          echo "JAVA_HOME is set to: $JAVA_HOME"
           java -version
-          
-      - name: Handle Java path
+
+      - name: Buildozer dependencies
         run: |
-          JAVA_HOME_PATH="/usr/lib/jvm/temurin-17-jdk-amd64"
+          sudo apt update
+          sudo apt install -y git zip unzip python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev automake
+          pip install --user --upgrade Cython virtualenv
+          pip install --user --upgrade buildozer
+          export PATH=$PATH:~/.local/bin/
 
-          sudo update-java-alternatives --set ${JAVA_HOME_PATH}
 
-          # Backup the original ~/.bashrc file
-          cp ~/.bashrc ~/.bashrc.bak
 
-          # Check if JAVA_HOME is already set in the file
-          if grep -q "export JAVA_HOME=" ~/.bashrc; then
-              # Update the existing JAVA_HOME line
-              sed -i "s|export JAVA_HOME=.*|export JAVA_HOME=${JAVA_HOME_PATH}|g" ~/.bashrc
-          else
-              # Append the JAVA_HOME setting to the end of the file
-              echo "export JAVA_HOME=${JAVA_HOME_PATH}" >> ~/.bashrc
-          fi
+          
+      # - name: Handle Java path
+      #   run: |
+      #     JAVA_HOME_PATH="/usr/lib/jvm/temurin-17-jdk-amd64"
 
-          # Apply the changes to the current session
-          export JAVA_HOME=${JAVA_HOME_PATH}
-          source ~/.bashrc
+      #     sudo update-java-alternatives --set ${JAVA_HOME_PATH}
 
-          # Verify the change
-          echo "JAVA_HOME is set to: $JAVA_HOME"
-          java -version
-          javac -version
+      #     # Backup the original ~/.bashrc file
+      #     cp ~/.bashrc ~/.bashrc.bak
 
-          ls /usr/lib/jvm
+      #     # Check if JAVA_HOME is already set in the file
+      #     if grep -q "export JAVA_HOME=" ~/.bashrc; then
+      #         # Update the existing JAVA_HOME line
+      #         sed -i "s|export JAVA_HOME=.*|export JAVA_HOME=${JAVA_HOME_PATH}|g" ~/.bashrc
+      #     else
+      #         # Append the JAVA_HOME setting to the end of the file
+      #         echo "export JAVA_HOME=${JAVA_HOME_PATH}" >> ~/.bashrc
+      #     fi
+
+      #     # Apply the changes to the current session
+      #     export JAVA_HOME=${JAVA_HOME_PATH}
+      #     source ~/.bashrc
+
+      #     # Verify the change
+      #     echo "JAVA_HOME is set to: $JAVA_HOME"
+      #     java -version
+      #     javac -version
+
+      #     ls /usr/lib/jvm
 
       # - name: Set up JDK 17
       #   uses: actions/setup-java@v2
@@ -61,9 +62,9 @@ jobs:
       #     java-version: '17'
       #     distribution: 'temurin'
 
-      # - name: Build with Buildozer
-      #   run: |
-      #     yes | buildozer -v android debug
+      - name: Build with Buildozer
+        run: |
+          yes | buildozer -v android debug
 
       # - name: Upload artifacts
       #   uses: actions/upload-artifact@v2
