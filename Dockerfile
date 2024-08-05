@@ -2,16 +2,16 @@ FROM ubuntu:latest
 
 # Install necessary packages
 RUN apt update
-# RUN apt install -y git 
-# RUN apt install -y zip 
-# RUN apt install -y unzip 
-# RUN apt install -y python3-pip 
-# RUN apt install -y autoconf 
-# RUN apt install -y libtool 
-# RUN apt install -y pkg-config 
-# RUN apt install -y zlib1g-dev 
-# RUN apt install -y libncurses5-dev 
-# RUN apt install -y libncursesw5-dev 
+RUN apt install -y git 
+RUN apt install -y zip 
+RUN apt install -y unzip 
+RUN apt install -y python3-pip 
+RUN apt install -y autoconf 
+RUN apt install -y libtool 
+RUN apt install -y pkg-config 
+RUN apt install -y zlib1g-dev 
+RUN apt install -y libncurses5-dev 
+RUN apt install -y libncursesw5-dev 
 RUN apt install -y libtinfo6 
 RUN apt install -y cmake 
 RUN apt install -y libffi-dev 
