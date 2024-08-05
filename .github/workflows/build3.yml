@@ -51,10 +51,10 @@ jobs:
         pip3 install --user --upgrade buildozer
 
 
-    - name: Java status
-      run: |
-        archlinux-java status
-        sudo archlinux-java set java-17-openjdk
+    # - name: Java status
+    #   run: |
+    #     archlinux-java status
+    #     sudo archlinux-java set java-17-openjdk
 
 
     - name: Appclean
