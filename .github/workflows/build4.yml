@@ -19,13 +19,11 @@ jobs:
 
       - name: Remove preinstalled JDKs
         run: |
-          sudo rm -rf /usr/lib/jvm/temurin-*
-
-      - name: Install Temurin JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+          sudo rm -rf /usr/lib/jvm/temurin-8
+          sudo rm -rf /usr/lib/jvm/temurin-11
+          sudo rm -rf /usr/lib/jvm/temurin-21
+          echo "JAVA_HOME is set to: $JAVA_HOME"
+          java -version
           
       - name: Handle Java path
         run: |
