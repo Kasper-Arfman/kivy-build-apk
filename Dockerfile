@@ -20,9 +20,9 @@ RUN apt update
 RUN apt install -y git zip unzip python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev automake
 
 # Install Python dependencies
-RUN pip install --upgrade Cython
-RUN pip install --user --upgrade virtualenv
-RUN pip install --user --upgrade buildozer
+RUN pip3 install --upgrade Cython
+RUN pip3 install --user --upgrade virtualenv
+RUN pip3 install --user --upgrade buildozer
 
 # Set environment variables
 ENV JAVA_HOME /usr/lib/jvm/temurin-17-jdk-amd64
