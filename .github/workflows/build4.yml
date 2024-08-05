@@ -22,6 +22,7 @@ jobs:
           sudo rm -rf /usr/lib/jvm/temurin-8
           sudo rm -rf /usr/lib/jvm/temurin-11
           sudo rm -rf /usr/lib/jvm/temurin-21
+          ls /usr/lib/jvm
           echo "JAVA_HOME is set to: $JAVA_HOME"
           java -version
           
