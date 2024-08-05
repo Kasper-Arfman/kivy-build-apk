@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
 # Install necessary packages
-RUN sudo apt update
-RUN sudo apt install -y \
+RUN apt update
+RUN apt install -y \
     git \
     zip \
     unzip \
