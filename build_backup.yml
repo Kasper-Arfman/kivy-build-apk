@@ -1,4 +1,4 @@
-name: Build6 APK
+name: Build APK
 on: [push]
 jobs:
   build-android:
@@ -14,12 +14,19 @@ jobs:
           sudo apt install -y git zip unzip python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev automake
           pip install --user --upgrade Cython virtualenv
           pip install --user --upgrade buildozer
+          # export PATH=$PATH:~/.local/bin/
+          echo 'export PATH=$PATH:~/.local/bin/' >> ~/.bashrc
 
       - name: Build APK
         run: |
+          # Github-actions comes with various pre-installed variants of Java
+          # So we don't need to install it, only set the correct version.
           export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
-          # sudo update-java-alternatives --set ${JAVA_HOME}
-          # export PATH=$JAVA_HOME/bin:$PATH
+          sudo update-java-alternatives --set ${JAVA_HOME}
+          export PATH=$JAVA_HOME/bin:$PATH
+
+          # JAVA_HOME only gets updated in this 'run'-session, so this must
+          # all be in the same block of code.
           yes | buildozer -v android debug
 
       - name: Upload artifacts
