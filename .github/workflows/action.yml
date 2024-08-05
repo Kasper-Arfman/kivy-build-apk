@@ -1,0 +1,10 @@
+name: 'Kivy Build APK'
+description: 'Builds an APK for Kivy using Buildozer'
+inputs:
+  example-input:
+    description: 'An example input for customization'
+    required: false
+    default: 'default-value'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
