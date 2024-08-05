@@ -32,17 +32,11 @@ jobs:
           export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
           export PATH=$JAVA_HOME/bin:$PATH
 
-      - name: Verify Java
-        run: | 
           echo "JAVA_HOME is set to: $JAVA_HOME"
           java -version
           javac -version
           ls /usr/lib/jvm
           printenv | grep JAVA_HOME
-
-          # grep JAVA_HOME /etc/environment
-          # grep JAVA_HOME /etc/profile
-          # grep JAVA_HOME /etc/profile.d/*
 
       # - name: Build with Buildozer
       #   run: |
