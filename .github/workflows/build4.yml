@@ -43,7 +43,7 @@ jobs:
           java -version
           javac -version
 
-          ls ~/usr/lib/jvm
+          ls /usr/lib/jvm
 
       # - name: Set up JDK 17
       #   uses: actions/setup-java@v2
