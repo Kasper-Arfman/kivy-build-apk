@@ -41,7 +41,8 @@ jobs:
           libffi-dev \
           libssl-dev \
           automake
-        export PATH=$PATH:~/.local/bin/
+        echo 'export PATH=$PATH:~/.local/bin/' >> ~/.bashrc
+        pip install --upgrade cython
         pip3 install --user --upgrade buildozer
 
     - name: Appclean
