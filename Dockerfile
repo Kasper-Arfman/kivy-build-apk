@@ -2,22 +2,7 @@ FROM ubuntu:latest
 
 # Install necessary packages
 RUN apt update
-RUN apt install -y \
-    git \
-    zip \
-    unzip \
-    python3-pip \
-    autoconf \
-    libtool \
-    pkg-config \
-    zlib1g-dev \
-    libncurses5-dev \
-    libncursesw5-dev \
-    libtinfo5 \
-    cmake \
-    libffi-dev \
-    libssl-dev \
-    automake
+RUN apt install -y git zip unzip python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev automake
 
 # Install Python dependencies
 RUN pip install --user --upgrade Cython virtualenv
