@@ -20,7 +20,7 @@ RUN apt update
 RUN apt install -y git zip unzip python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev automake
 
 # Install Python dependencies
-RUN pip3 install --upgrade Cython
+RUN pip3 install --no-cache-dir Cython
 RUN pip3 install --user --upgrade virtualenv
 RUN pip3 install --user --upgrade buildozer
 
