@@ -18,8 +18,8 @@ jobs:
 
 
       - name: Remove preinstalled JDKs
-          run: |
-            sudo rm -rf /usr/lib/jvm/temurin-*
+        run: |
+          sudo rm -rf /usr/lib/jvm/temurin-*
 
       - name: Install Temurin JDK 17
         uses: actions/setup-java@v3
